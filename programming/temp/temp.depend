@@ -1,7 +1,0 @@
-# depslib dependency file v1.0
-1586867234 source:c:\programming\temp\main.cpp
-	<iostream>
-
-1586867342 source:c:\programming\temp\main.c
-	<stdio.h>
-
