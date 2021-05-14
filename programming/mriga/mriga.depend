@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1601976620 source:c:\programming\mriga\main.c
+	<stdio.h>
+	<stdlib.h>
+
