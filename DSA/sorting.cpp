@@ -248,6 +248,7 @@ void BinSort(int A[], int n)
     // Delete heap memory
     delete[] bins;
 }
+
 int main()
 {
     ll n;
