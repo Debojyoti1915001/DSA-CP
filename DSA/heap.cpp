@@ -10,28 +10,31 @@ void Insert(int A[], int n)
     }
     A[i] = temp;
 }
-void Delete(int A[], int n)
+int Delete(int A[], int n)
 {
-    int x, i, j;
+    int i, j, x, temp, val;
+    val = A[1];
     x = A[n];
     A[1] = A[n];
-    i = 1, j = 2 * i;
-    while (j < n - 1)
+    A[n] = val;
+    i = 1;
+    j = i * 2;
+    while (j <= n - 1)
     {
-        if (A[j + 1] > A[j])
+        if (j < n - 1 && A[j + 1] > A[j])
             j = j + 1;
         if (A[i] < A[j])
         {
-            swap(A[i], A[j]);
+            temp = A[i];
+            A[i] = A[j];
+            A[j] = temp;
             i = j;
             j = 2 * j;
         }
         else
-        {
             break;
-        }
     }
-    A[n] = x;
+    return val;
 }
 int main()
 {
@@ -46,7 +49,7 @@ int main()
         cout << A[i] << " ";
     }
     cout << endl;
-    for (i = 7; i >= 1; i--)
+    for (i = 7; i > 1; i--)
     {
         Delete(A, i);
     }
