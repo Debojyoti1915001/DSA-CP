@@ -66,7 +66,7 @@ int main()
             arr[i][j] = 0;
         }
     }
-    if (nQueen(arr, 0, n))
+    if (nQueen(arr, 0, n)) //yep
     {
         for (int i = 0; i < n; i++)
         {
