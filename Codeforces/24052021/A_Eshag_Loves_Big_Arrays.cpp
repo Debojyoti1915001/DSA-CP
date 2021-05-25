@@ -162,24 +162,10 @@ void solve()
 {
     l n;
     cin >> n;
-    string s;
-    cin >> s;
-    int c = 0;
-    for (int i = 0; i < s.length(); i++)
-    {
-        c += s[i] == '0';
-    }
-    if (c == 1)
-    {
-        cout << "BOB" << endl;
-        return;
-    }
-    if (c % 2 != 0)
-    {
-        cout << "ALICE" << endl;
-        return;
-    }
-    cout << "BOB" << endl;
+    vector<l> v(n);
+    fo(i, n) cin >> v[i];
+    l mn = *min_element(all(v));
+    cout << n - count(all(v), mn) << endl;
 }
 
 int main()

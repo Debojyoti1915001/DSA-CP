@@ -162,24 +162,28 @@ void solve()
 {
     l n;
     cin >> n;
-    string s;
-    cin >> s;
-    int c = 0;
-    for (int i = 0; i < s.length(); i++)
+    l neg = 0, z = 0, pos = 0;
+    vl v(n);
+    fo(i, n) cin >> v[i];
+    fo(i, n)
     {
-        c += s[i] == '0';
+        if (v[i] < 0)
+            neg++;
+        else if (v[i] > 0)
+            pos++;
+        else
+            z++;
     }
-    if (c == 1)
+    l ans = neg;
+    if (pos > 0)
+        ans++;
+    if (z > 0 && pos > 0)
+        ans++;
+    else
     {
-        cout << "BOB" << endl;
-        return;
+        ans += z;
     }
-    if (c % 2 != 0)
-    {
-        cout << "ALICE" << endl;
-        return;
-    }
-    cout << "BOB" << endl;
+    cout << ans << endl;
 }
 
 int main()
