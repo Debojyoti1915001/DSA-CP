@@ -52,20 +52,15 @@ void solve()
 {
     l n;
     cin >> n;
-    string s;
-    cin >> s;
-    map<pair<l, l>, l> m;
-    l d = 0, k = 0;
     for (l i = 0; i < n; i++)
     {
-        if (s[i] == 'D')
-            d++;
-        if (s[i] == 'K')
-            k++;
-        l ans = m[fun(d, k)]++;
-        cout << ans + 1 << " ";
+        if ((n - i * 11) % 111 == 0 && n >= i * 11)
+        {
+            yes;
+            return;
+        }
     }
-    cout << endl;
+    no;
 }
 
 int main()

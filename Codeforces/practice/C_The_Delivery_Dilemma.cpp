@@ -1,3 +1,5 @@
+// Debojyoti Das
+//NIT Silchar
 #include <bits/stdc++.h>
 using namespace std;
 #define gc getchar_unlocked
@@ -39,33 +41,33 @@ template <typename T>
 
 const l mod = 1000000007;
 const l N = 3e5, M = N;
-pair<l, l> fun(l d, l k)
-{
-    if (d == 0)
-        return {d, 1};
-    if (k == 0)
-        return {1, k};
-    l t = __gcd(d, k);
-    return {d / t, k / t};
-}
+
 void solve()
 {
     l n;
     cin >> n;
-    string s;
-    cin >> s;
-    map<pair<l, l>, l> m;
-    l d = 0, k = 0;
+    vector<l> a(n), b(n);
+    fo(i, n) cin >> a[i];
+    fo(i, n) cin >> b[i];
+    vector<pair<l, l>> v;
+    fo(i, n)
+    {
+        v.push_back({a[i], b[i]});
+    }
+    sort(v.begin(), v.end());
+    vector<l> suf(n + 1);
+    for (l i = n - 1; i >= 0; i--)
+    {
+        //pick up all orders by yourself
+        suf[i] = suf[i + 1] + v[i].second;
+    }
+    l ans = suf[0];
     for (l i = 0; i < n; i++)
     {
-        if (s[i] == 'D')
-            d++;
-        if (s[i] == 'K')
-            k++;
-        l ans = m[fun(d, k)]++;
-        cout << ans + 1 << " ";
+        //pick the first i elements rest order
+        ans = min(ans, max(suf[i + 1], v[i].first));
     }
-    cout << endl;
+    cout << ans << endl;
 }
 
 int main()

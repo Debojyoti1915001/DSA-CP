@@ -1,6 +1,5 @@
-//1915001 Debojyoti Das NIT Silchar
-//Jai Mata Di
-//FOR MA and BABA
+// Debojyoti Das
+//NIT Silchar
 #include <bits/stdc++.h>
 using namespace std;
 #define gc getchar_unlocked
@@ -39,127 +38,13 @@ typedef vector<pl> vpl;
 typedef vector<vi> vvi;
 typedef vector<vl> vvl;
 template <typename T>
-T gcd(T a, T b)
-{
-    if (a == 0)
-        return b;
-    return gcd(b % a, a);
-}
-template <typename T>
-T pow(T a, T b, l m)
-{
-    T ans = 1;
-    while (b > 0)
-    {
-        if (b % 2 == 1)
-            ans = (ans * a) % m;
-        b /= 2;
-        a = (a * a) % m;
-    }
-    return ans % m;
-}
 
 const l mod = 1000000007;
 const l N = 3e5, M = N;
-vi g[N];
-l a[N];
-l mpow(l base, l exp)
-{
-    base %= mod;
-    int result = 1;
-    while (exp > 0)
-    {
-        if (exp & 1)
-            result = ((l)result * base) % mod;
-        base = ((l)base * base) % mod;
-        exp >>= 1;
-    }
-    return result;
-}
-
-void ipgraph(l n, l m)
-{
-    l i, u, v;
-    while (m--)
-    {
-        cin >> u >> v;
-        g[u - 1].pb(v - 1);
-        g[v - 1].pb(u - 1);
-    }
-}
-int sgn(l n)
-{
-    if (n > 0)
-    {
-        return 1;
-    }
-    else
-    {
-        return -1;
-    }
-}
-l max_digit(l n)
-{
-    l lar = 0;
-    while (n)
-    {
-        l r = n % 10;
-        lar = max(r, lar);
-        n = n / 10;
-    }
-    return lar;
-}
-l min_digit(l n)
-{
-    l lar = 9;
-    while (n)
-    {
-        l r = n % 10;
-        lar = min(r, lar);
-        n = n / 10;
-    }
-    return lar;
-}
-int prime(l n)
-{
-    for (l i = 2; i < n; i++)
-    {
-        if (n % i == 0)
-        {
-            return 0;
-        }
-    }
-    return 1;
-}
-void dfs(l u, l par)
-{
-    for (int v : g[u])
-    {
-        if (v == par)
-            continue;
-        dfs(v, u);
-    }
-}
-int per(l n)
-{
-    if ((l)sqrt(n) == (double)sqrt(n))
-    {
-        return 1;
-    }
-    return 0;
-}
-int vowel(char c)
-{
-    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
-    {
-        return 1;
-    }
-    return 0;
-}
-//=======================
 
 void solve()
 {
+    
 }
 
 int main()

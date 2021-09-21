@@ -1,3 +1,5 @@
+// Debojyoti Das
+//NIT Silchar
 #include <bits/stdc++.h>
 using namespace std;
 #define gc getchar_unlocked
@@ -39,33 +41,89 @@ template <typename T>
 
 const l mod = 1000000007;
 const l N = 3e5, M = N;
-pair<l, l> fun(l d, l k)
-{
-    if (d == 0)
-        return {d, 1};
-    if (k == 0)
-        return {1, k};
-    l t = __gcd(d, k);
-    return {d / t, k / t};
-}
+
 void solve()
 {
     l n;
     cin >> n;
     string s;
     cin >> s;
-    map<pair<l, l>, l> m;
-    l d = 0, k = 0;
+    l c1 = 0, c2 = 0;
     for (l i = 0; i < n; i++)
     {
-        if (s[i] == 'D')
-            d++;
-        if (s[i] == 'K')
-            k++;
-        l ans = m[fun(d, k)]++;
-        cout << ans + 1 << " ";
+        if (s[i] == '2')
+            c2++;
+        else
+            c1++;
     }
-    cout << endl;
+    if (c2 == 1)
+    {
+        no;
+        return;
+    }
+    set<l> set;
+    vector<vector<char>> mat(n, vector<char>(n));
+    for (l i = 0; i < n; i++)
+    {
+        l f = 0;
+        for (l j = i; j < n; j++)
+        {
+            if (i == j)
+            {
+                mat[i][j] = 'X';
+            }
+            else
+            {
+                if (s[i] == '1' || s[j] == '1')
+                {
+                    mat[i][j] = '=';
+                }
+                else if (f == 0)
+                {
+                    mat[i][j] = '+';
+                    f = 1;
+                    set.insert(i);
+                }
+                else
+                {
+                    mat[i][j] = '-';
+                    set.insert(j);
+                }
+            }
+        }
+    }
+    if (c2 != set.size())
+    {
+        no;
+        return;
+    }
+    for (l i = 0; i < n; i++)
+    {
+        for (l j = 0; j < i; j++)
+        {
+            if (mat[j][i] == '+')
+            {
+                mat[i][j] = '-';
+            }
+            else if (mat[j][i] == '-')
+            {
+                mat[i][j] = '+';
+            }
+            else
+            {
+                mat[i][j] = '=';
+            }
+        }
+    }
+    yes;
+    for (l i = 0; i < n; i++)
+    {
+        for (l j = 0; j < n; j++)
+        {
+            cout << mat[i][j];
+        }
+        cout << endl;
+    }
 }
 
 int main()

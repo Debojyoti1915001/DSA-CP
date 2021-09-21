@@ -5,18 +5,6 @@ using namespace std;
 #define fr(i, a, b) for (int i = a; i <= b; i++)
 #define Fo(i, k, n) for (i = k; k < n ? i < n : i > n; k < n ? i += 1 : i -= 1)
 #define l long long int
-#define si(x) cin >> x
-#define ss(s) cin >> s
-#define pi(x) cout << x << " "
-#define pl(x) cout << x << endl
-#define ps(s) cout << s
-#define deb(x) cout << #x << "=" << x << endl
-#define deb2(x, y) cout << #x << "=" << x << "," << #y << "=" << y << endl
-#define pb push_back
-#define mp make_pair
-#define pf push_front
-#define popb pop_back
-#define popf pop_front
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
 #define nl cout << endl
@@ -39,33 +27,25 @@ template <typename T>
 
 const l mod = 1000000007;
 const l N = 3e5, M = N;
-pair<l, l> fun(l d, l k)
-{
-    if (d == 0)
-        return {d, 1};
-    if (k == 0)
-        return {1, k};
-    l t = __gcd(d, k);
-    return {d / t, k / t};
-}
+int t, k;
+string s, u[17] = {"1", "4", "6", "8", "9", "22", "25", "27", "32", "33", "35", "52", "55", "57", "72", "75", "77"};
 void solve()
 {
-    l n;
-    cin >> n;
-    string s;
-    cin >> s;
-    map<pair<l, l>, l> m;
-    l d = 0, k = 0;
-    for (l i = 0; i < n; i++)
+    for (int i = 0; i < 17; i++)
     {
-        if (s[i] == 'D')
-            d++;
-        if (s[i] == 'K')
-            k++;
-        l ans = m[fun(d, k)]++;
-        cout << ans + 1 << " ";
+        int a = 0;
+        for (int j = 0; j < k; j++)
+        {
+            if (s[j] == u[i][a])
+                a++;
+        }
+        if (a == u[i].size())
+        {
+            cout << a << endl
+                 << u[i] << endl;
+            return;
+        }
     }
-    cout << endl;
 }
 
 int main()
@@ -81,6 +61,7 @@ int main()
     cin >> t;
     for (l i = 1; i <= t; i++)
     {
+        cin >> k >> s;
         //            cout<<"Case #"<<i<<": ";
         solve();
     }

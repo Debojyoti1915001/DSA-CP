@@ -39,33 +39,48 @@ template <typename T>
 
 const l mod = 1000000007;
 const l N = 3e5, M = N;
-pair<l, l> fun(l d, l k)
+vector<string> v;
+void generate()
 {
-    if (d == 0)
-        return {d, 1};
-    if (k == 0)
-        return {1, k};
-    l t = __gcd(d, k);
-    return {d / t, k / t};
+    l p = 1;
+    while (p < 1e16 + 15)
+    {
+        v.push_back(to_string(p));
+        p = p * 2;
+    }
 }
 void solve()
 {
     l n;
     cin >> n;
-    string s;
-    cin >> s;
-    map<pair<l, l>, l> m;
-    l d = 0, k = 0;
-    for (l i = 0; i < n; i++)
+    string cur = to_string(n);
+    l ans = INT_MAX;
+    for (l k = 0; k < v.size(); k++)
     {
-        if (s[i] == 'D')
-            d++;
-        if (s[i] == 'K')
-            k++;
-        l ans = m[fun(d, k)]++;
-        cout << ans + 1 << " ";
+        l c = 0;
+        l i = 0, j = 0;
+        string comp = v[k];
+        while (i < cur.size() && j < comp.size())
+        {
+            if (cur[i] == comp[j])
+            {
+                j++;
+            }
+            else
+                c++;
+            i++;
+        }
+        if (j == comp.size())
+        {
+            c += cur.size() - i;
+        }
+        if (i == cur.size())
+        {
+            c += comp.size() - j;
+        }
+        ans = min(ans, c);
     }
-    cout << endl;
+    cout << ans << endl;
 }
 
 int main()
@@ -79,6 +94,7 @@ int main()
     //        freopen("timber_output.txt", "w", stdout);
     int t = 1;
     cin >> t;
+    generate();
     for (l i = 1; i <= t; i++)
     {
         //            cout<<"Case #"<<i<<": ";

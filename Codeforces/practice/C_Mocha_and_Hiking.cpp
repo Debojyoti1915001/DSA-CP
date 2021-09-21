@@ -39,33 +39,36 @@ template <typename T>
 
 const l mod = 1000000007;
 const l N = 3e5, M = N;
-pair<l, l> fun(l d, l k)
-{
-    if (d == 0)
-        return {d, 1};
-    if (k == 0)
-        return {1, k};
-    l t = __gcd(d, k);
-    return {d / t, k / t};
-}
 void solve()
 {
     l n;
     cin >> n;
-    string s;
-    cin >> s;
-    map<pair<l, l>, l> m;
-    l d = 0, k = 0;
-    for (l i = 0; i < n; i++)
+    vl a(n + 1);
+
+    for (int i = 1; i <= n; i++)
+        cin >> a[i];
+    if (a[1])
     {
-        if (s[i] == 'D')
-            d++;
-        if (s[i] == 'K')
-            k++;
-        l ans = m[fun(d, k)]++;
-        cout << ans + 1 << " ";
+        printf("%d ", n + 1);
+        for (int i = 1; i <= n; i++)
+            printf("%d ", i);
+        return;
     }
-    cout << endl;
+    for (int i = 1; i < n; i++)
+    {
+        if (!a[i] && a[i + 1])
+        {
+            for (int j = 1; j <= i; j++)
+                printf("%d ", j);
+            printf("%d ", n + 1);
+            for (int j = i + 1; j <= n; j++)
+                printf("%d ", j);
+            return;
+        }
+    }
+    for (int i = 1; i <= n; i++)
+        printf("%d ", i);
+    printf("%d ", n + 1);
 }
 
 int main()

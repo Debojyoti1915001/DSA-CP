@@ -1,3 +1,5 @@
+// Debojyoti Das
+//NIT Silchar
 #include <bits/stdc++.h>
 using namespace std;
 #define gc getchar_unlocked
@@ -39,33 +41,24 @@ template <typename T>
 
 const l mod = 1000000007;
 const l N = 3e5, M = N;
-pair<l, l> fun(l d, l k)
-{
-    if (d == 0)
-        return {d, 1};
-    if (k == 0)
-        return {1, k};
-    l t = __gcd(d, k);
-    return {d / t, k / t};
-}
+
 void solve()
 {
     l n;
     cin >> n;
-    string s;
-    cin >> s;
-    map<pair<l, l>, l> m;
-    l d = 0, k = 0;
+    vector<l> v(n);
     for (l i = 0; i < n; i++)
     {
-        if (s[i] == 'D')
-            d++;
-        if (s[i] == 'K')
-            k++;
-        l ans = m[fun(d, k)]++;
-        cout << ans + 1 << " ";
+        v[i] = n - i;
     }
-    cout << endl;
+    if (n % 2 == 1)
+    {
+        l t = v[0];
+        v[0] = v[n / 2];
+        v[n / 2] = t;
+    }
+    fo(i, n) cout << v[i] << " ";
+    nl;
 }
 
 int main()

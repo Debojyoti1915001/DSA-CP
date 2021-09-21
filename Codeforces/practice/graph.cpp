@@ -1,3 +1,5 @@
+// Debojyoti Das
+//NIT Silchar
 #include <bits/stdc++.h>
 using namespace std;
 #define gc getchar_unlocked
@@ -39,33 +41,33 @@ template <typename T>
 
 const l mod = 1000000007;
 const l N = 3e5, M = N;
-pair<l, l> fun(l d, l k)
+vector<int> dsuf;
+int find(int v)
 {
-    if (d == 0)
-        return {d, 1};
-    if (k == 0)
-        return {1, k};
-    l t = __gcd(d, k);
-    return {d / t, k / t};
+    if (dsuf[v] == -1)
+        return v;
+    return find(dsuf[v]);
+}
+void union(int fromP, int toP)
+{
+    fromP = find(fromP);
+    toP = find(toP);
+    dsuf[fromP] = toP;
+}
+bool isCyclic(vector<pair<int, int>> &edges_list)
+{
+    for (auto p : edges_list)
+    {
+        int fromP = find(p.first);
+        int toP = find(p.second);
+        if (fromP == toP)
+            return true;
+        union(fromP, toP);
+    }
+    return false;
 }
 void solve()
 {
-    l n;
-    cin >> n;
-    string s;
-    cin >> s;
-    map<pair<l, l>, l> m;
-    l d = 0, k = 0;
-    for (l i = 0; i < n; i++)
-    {
-        if (s[i] == 'D')
-            d++;
-        if (s[i] == 'K')
-            k++;
-        l ans = m[fun(d, k)]++;
-        cout << ans + 1 << " ";
-    }
-    cout << endl;
 }
 
 int main()

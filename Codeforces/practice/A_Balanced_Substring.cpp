@@ -1,3 +1,5 @@
+// Debojyoti Das
+//NIT Silchar
 #include <bits/stdc++.h>
 using namespace std;
 #define gc getchar_unlocked
@@ -39,33 +41,22 @@ template <typename T>
 
 const l mod = 1000000007;
 const l N = 3e5, M = N;
-pair<l, l> fun(l d, l k)
-{
-    if (d == 0)
-        return {d, 1};
-    if (k == 0)
-        return {1, k};
-    l t = __gcd(d, k);
-    return {d / t, k / t};
-}
+
 void solve()
 {
     l n;
     cin >> n;
     string s;
     cin >> s;
-    map<pair<l, l>, l> m;
-    l d = 0, k = 0;
-    for (l i = 0; i < n; i++)
+    for (l i = 0; i < n - 1; i++)
     {
-        if (s[i] == 'D')
-            d++;
-        if (s[i] == 'K')
-            k++;
-        l ans = m[fun(d, k)]++;
-        cout << ans + 1 << " ";
+        if (s[i] != s[i + 1])
+        {
+            cout << i + 1 << " " << i + 2 << endl;
+            return;
+        }
     }
-    cout << endl;
+    cout << -1 << " " << -1 << endl;
 }
 
 int main()
@@ -78,7 +69,7 @@ int main()
     //        freopen("timber_input.txt", "r", stdin);
     //        freopen("timber_output.txt", "w", stdout);
     int t = 1;
-    cin >> t;
+   // cin >> t;
     for (l i = 1; i <= t; i++)
     {
         //            cout<<"Case #"<<i<<": ";

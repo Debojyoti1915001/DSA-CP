@@ -1,3 +1,5 @@
+// Debojyoti Das
+//NIT Silchar
 #include <bits/stdc++.h>
 using namespace std;
 #define gc getchar_unlocked
@@ -39,33 +41,49 @@ template <typename T>
 
 const l mod = 1000000007;
 const l N = 3e5, M = N;
-pair<l, l> fun(l d, l k)
-{
-    if (d == 0)
-        return {d, 1};
-    if (k == 0)
-        return {1, k};
-    l t = __gcd(d, k);
-    return {d / t, k / t};
-}
+
 void solve()
 {
-    l n;
-    cin >> n;
+    l a, b;
+    cin >> a >> b;
     string s;
     cin >> s;
-    map<pair<l, l>, l> m;
-    l d = 0, k = 0;
-    for (l i = 0; i < n; i++)
+    l n = s.length();
+    l ans = a;
+    vector<pair<char, l>> v;
+    l i = 0;
+    while (i < n)
     {
-        if (s[i] == 'D')
-            d++;
-        if (s[i] == 'K')
-            k++;
-        l ans = m[fun(d, k)]++;
-        cout << ans + 1 << " ";
+        l c = 1;
+        while (i + 1 != n && s[i] == s[i + 1])
+        {
+            c++;
+            i++;
+        }
+        if (v.size() == 0 && s[i] == '0')
+        {
+            i++;
+            continue;
+        }
+        v.push_back({s[i], c});
+        i++;
     }
-    cout << endl;
+    if (v.size() != 0 && v[v.size() - 1].first == '0')
+        v.pop_back();
+    l sz = v.size();
+    if (sz == 0)
+    {
+        cout << 0 << endl;
+        return;
+    }
+    for (l i = 0; i < sz; i++)
+    {
+        if (v[i].first == '0')
+        {
+            ans = min(ans + b * v[i].second, ans + a);
+        }
+    }
+    cout << ans << endl;
 }
 
 int main()
