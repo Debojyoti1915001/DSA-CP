@@ -44,7 +44,9 @@ const l N = 3e5, M = N;
 
 void solve()
 {
-    
+    int num=4;
+    num=455>23?:3;
+    cout<<num;
 }
 
 int main()
