@@ -4,6 +4,7 @@ using namespace std;
 class Employee
 {
     int id;
+    //can't pass count from one object to another
     static int count;
 
 public:
@@ -29,20 +30,21 @@ int Employee::count=1000; // Default value is 0
 
 int main()
 {
-    Employee harry, rohan, lovish;
+    Employee azad, arka, debo;
     // harry.id = 1;
     // harry.count=1; // cannot do this as id and count are private
 
-    harry.setData();
-    harry.getData();
+    azad.setData();
+    azad.getData();
+    //no ref from any object
     Employee::getCount();
 
-    rohan.setData();
-    rohan.getData();
+    arka.setData();
+    arka.getData();
     Employee::getCount();
 
-    lovish.setData();
-    lovish.getData();
+    debo.setData();
+    debo.getData();
     Employee::getCount();
 
     return 0;
