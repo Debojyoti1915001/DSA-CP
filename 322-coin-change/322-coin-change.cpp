@@ -14,6 +14,7 @@ public:
                 dp[1][j]=INT_MAX-1;
             }
         }
+        // remember to take INT_MAX-1 cause it will show overflow when added with 1
         for(int i=2;i<=n;i++){
             for(int j=1;j<=m;j++){
                 if(j>=v[i-1]){
