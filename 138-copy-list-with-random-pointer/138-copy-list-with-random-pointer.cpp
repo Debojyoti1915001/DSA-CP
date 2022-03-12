@@ -13,22 +13,33 @@ public:
     }
 };
 */
-
+//first solution using hashmap
+//second one in constant space
 class Solution {
 public:
     Node* copyRandomList(Node* head) {
-        unordered_map<Node*,Node*>m;
-        Node*p=head;
+        if(!head)return NULL;
+        Node *p=head,*res=NULL;
+        //create a copy mf
         while(p){
-            m[p]=new Node(p->val);
-            p=p->next;
+            Node*newNode=new Node(p->val);
+            newNode->next=p->next;
+            p->next=newNode;
+            p=p->next->next;
         }
         p=head;
         while(p){
-            m[p]->next=m[p->next];    
-            m[p]->random=m[p->random];    
-            p=p->next;
+            p->next->random=p->random?p->random->next:NULL;
+            p=p->next->next;
         }
-        return m[head];
+        p=head->next;
+        res=head->next;
+        while(head){
+            head->next=head->next->next;
+            p->next=(p->next)?p->next->next:NULL;
+            p=p->next;
+            head=head->next;
+        }
+        return res;
     }
 };
