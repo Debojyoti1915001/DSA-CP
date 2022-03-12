@@ -27,6 +27,7 @@ public:
             p->next=newNode;
             p=p->next->next;
         }
+        //A A' B B'
         p=head;
         while(p){
             p->next->random=p->random?p->random->next:NULL;
