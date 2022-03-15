@@ -20,7 +20,7 @@ public:
 //         return res;
         int countA=count(s.begin(),s.end(),'a');//count of 'a' in front
         int countB=0;//count of 'b' in back
-        int ans=countA;//max ans is when we remove all the elements
+        int ans=countA;//max ans is when we remove all the 'a' elements
         for(auto c:s){
             countA-=c=='a';
             countB+=c=='b';
