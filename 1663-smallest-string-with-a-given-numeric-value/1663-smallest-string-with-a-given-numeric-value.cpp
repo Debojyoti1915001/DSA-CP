@@ -11,7 +11,7 @@ public:
                 break;
             else if(k<25)
             {
-                s[i] = (char)('a'+k);          //using (char) to convert ASCII to respective character
+                s[i] = (char)('a'+k);
                 k=0;
             }
             else{
