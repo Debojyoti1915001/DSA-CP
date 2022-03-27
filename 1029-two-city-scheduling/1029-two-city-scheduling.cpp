@@ -1,12 +1,19 @@
-class Solution {
-public:
-   int twoCitySchedCost(vector<vector<int>>& cs, int res = 0) {
-  nth_element(begin(cs), begin(cs) + cs.size() / 2, end(cs), [](vector<int> &a, vector<int> &b) {
-    return (a[0] - a[1] < b[0] - b[1]);
-  });
-  for (auto i = 0; i < cs.size() / 2; ++i) {
-    res += cs[i][0] + cs[i + cs.size() / 2][1];
-  }
-  return res;
+/*
+sort by difference in costs of a and b 
+send the first n to a, rest to b 
+*/
+
+bool comparator ( vector <int> &a, vector <int> &b ){
+    if( a[0] - a[1]  < b[0] - b[1]) return true; // sort by difference in cost
+    else return false;
 }
+
+class Solution {
+public:   
+    int twoCitySchedCost(vector<vector<int>>& costs) {
+        sort(costs.begin(), costs.end(), comparator);
+        int n = costs.size()/2, ans = 0;
+        for( int i = 0 ; i < n ; i++ ) ans += costs[i][0] + costs[i+n][1]; // send the first to a , rest to b
+        return ans;
+    }
 };
