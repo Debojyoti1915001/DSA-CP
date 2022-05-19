@@ -15,8 +15,10 @@ public:
 	    long long mn=arr[0];
 	    long long ans=arr[0];
 	    for(int i=1;i<n;i++){
+	        //if the cur ele is neg swap the numbers 
 	        long long x=arr[i];
 	        if(x<0)swap(mx,mn);
+	        //otherwise check the  greater of cur ele and cur ele times max obtained so far
 	        mx=max(x,mx*x);
 	        mn=min(x,mn*x);
 	        ans=max(ans,mx);
