@@ -6,7 +6,7 @@ public:
         int sz=nums.size();
         for(int i=0;i<sz;i++){
             if(m[k-nums[i]]>0){
-                ans++;
+                ans++;  
                 m[k-nums[i]]--;
             }else{
                 m[nums[i]]++;
