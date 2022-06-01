@@ -11,6 +11,7 @@ public:
         for(int i=1;i<intervals.size();i++){
             if(intervals[i][0]<end){
                 res++;
+                //i.e. we are removing one of the prev or current element one with less end point
                 end=min(end,intervals[i][1]);
             }else{
                 end=intervals[i][1];
