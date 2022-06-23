@@ -6,11 +6,15 @@ using namespace std;
 class Solution {
   public:
     // Function to detect cycle in an undirected graph.
+    //so for undirected graph 
     bool dfs(vector<int> g[],vector<int>&vis,int cur,int par){
-        vis[cur]=1;
+        vis[cur]=1;//make first vis[cur] as one
         for(auto x:g[cur]){
+            //if the traversed node is par skip it
             if(x==par)continue;
+            //if the traversed node is already visited then there is a cycle
             if(vis[x])return true;
+            //else check if we can get true from somewhere
             else if(dfs(g,vis,x,cur))return true;
         }
         return false;
