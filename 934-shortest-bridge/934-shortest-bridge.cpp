@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // https://leetcode.com/problems/shortest-bridge/discuss/189293/C%2B%2B-BFS-Island-Expansion-%2B-UF-Bonus
     vector<int>dirs{0,1,0,-1,0};
     queue<pair<int,int>>q;
     void dfs(vector<vector<int>>& g,int i,int j){
