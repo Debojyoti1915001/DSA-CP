@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int>parent;
     int find(int x){
-        return parent[x]==x?x:find(parent[x]);
+        return x==parent[x]?x:find(parent[x]);
     }
     int makeConnected(int n, vector<vector<int>>& c) {
         parent=vector<int>(n);
