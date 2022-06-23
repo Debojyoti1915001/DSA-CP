@@ -42,12 +42,12 @@ class Solution
 				return steps;
 			for(int i = 0; i < dxy.size(); i++)
 			{
-				int n_x = x + dxy[i][0];
-				int n_y = y + dxy[i][1];
-				if(isValid(n_x, n_y, N) and !vis[n_x][n_y])
+				int nx = x + dxy[i][0];
+				int ny = y + dxy[i][1];
+				if(isValid(nx, ny, N) and !vis[nx][ny])
 				{
-					q.push({n_x, n_y, steps+1});
-					vis[n_x][n_y] = true;
+					q.push({nx, ny, steps+1});
+					vis[nx][ny] = true;
 				}
 			}
 		}
