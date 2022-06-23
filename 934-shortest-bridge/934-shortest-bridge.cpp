@@ -13,12 +13,10 @@ public:
     int shortestBridge(vector<vector<int>>& g) {
         int n=g.size();
         int m=g[0].size();
-        int f=1;
-        for(int i=0;i<n&&f;i++){
-            for(int j=0;j<m&&f;j++){
+        for(int i=0;i<n&&q.size()==0;i++){
+            for(int j=0;j<m&&q.size()==0;j++){
                 if(g[i][j]){
                     dfs(g,i,j);
-                    f=0;
                 }
             }
         }
