@@ -11,10 +11,11 @@ public:
            sum -= pq.top();
             if(sum == 0 || sum >= pq.top()) return false;
             int old=pq.top()%sum;
-             if(sum!=1&& old <1 ) return false;
+            sum+=old; 
+            if(old==0&&sum!=1 ) return false;
             pq.pop();
             pq.push(old);
-            sum+=old;
+            
         }
         return true;
     }
