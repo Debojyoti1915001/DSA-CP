@@ -1,5 +1,8 @@
 class Solution {
 public:
+    //1.find the total sum 
+    //2.subtract sum from pq.top(){max element obtained from top of max heap}
+    //3.sum >0 and pq.top()<sum
     bool isPossible(vector<int>& t) {
         priority_queue<long long>pq;
         long long sum=0;
