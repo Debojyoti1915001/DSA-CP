@@ -14,7 +14,7 @@ public:
         if(i == s1.length() && j == s2.length()) return true;
         
         if(s1[i] == s3[k] && s2[j] == s3[k]){
-            return helper(i+1, j, k+1, s1, s2, s3, dp) || helper(i, j+1, k+1, s1, s2, s3, dp);
+            return dp[i][j]=(helper(i+1, j, k+1, s1, s2, s3, dp) || helper(i, j+1, k+1, s1, s2, s3, dp));
         }
         
         else if(s1[i] == s3[k] && helper(i+1, j, k+1, s1, s2, s3, dp)) return dp[i][j]=true;
