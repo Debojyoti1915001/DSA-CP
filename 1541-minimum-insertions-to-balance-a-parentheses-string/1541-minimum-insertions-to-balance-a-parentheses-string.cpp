@@ -10,7 +10,7 @@ public:
                 top++;
             else{
                 if(i+1<n && t[i+1]==')') i++;
-                else ans++;
+               else ans++;
                 
                 if(top==0) ans++;
                 else top--;
