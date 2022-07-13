@@ -27,11 +27,10 @@ public:
             
             s2.push({v[i],i});
         }
-        long long int sum=0,mod=1e9 +7;
+        int sum=0,mod=1e9 +7;
         for(int i=0;i<n;i++){
             int l=left[i];
             int r=right[i];
-            // cout<<r-i<<" "<<i-l<<endl;
             long long int val1=((i-l)*v[i])%mod;
             long long int val2=((r-i)*val1)%mod;
             sum=(sum+val2)%mod;
