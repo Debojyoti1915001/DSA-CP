@@ -17,8 +17,8 @@ public:
     
     int closestCost(vector<int>& baseCosts, vector<int>& toppingCosts, int target) 
     {
-        for(int i=0; i<baseCosts.size(); i++)
-            helper(toppingCosts, target, baseCosts[i], 0);
+        for(auto b:baseCosts)
+            helper(toppingCosts, target, b, 0);
         
         return ans;
     }
