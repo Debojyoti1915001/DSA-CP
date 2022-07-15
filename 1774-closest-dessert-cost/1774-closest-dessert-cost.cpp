@@ -1,25 +1,22 @@
 class Solution {
 public:
-    
-    int ans = INT_MAX;
-    
-    void helper(vector<int>& toppingCosts, int target, int currSum, int index)
-    {
-        if(abs(target-ans) > abs(target-currSum)) ans = currSum;
-        else if(abs(target-ans) == abs(currSum-target)) ans = min(ans, currSum);
+    int ans=INT_MAX;
+    void solve(vector<int>& top,int t,int cur,int i){
+        if(abs(t-cur)<abs(t-ans)){
+            ans=cur;
+        }else if(abs(t-cur)==abs(t-ans)){
+            if(cur<ans)ans=cur;
+        }
+        if(i==top.size())return;
+        solve(top,t,cur,i+1);
+        solve(top,t,cur+top[i],i+1);
+        solve(top,t,cur+2*top[i],i+1);
         
-        if(index == toppingCosts.size()) return;
-        
-        helper(toppingCosts, target, currSum, index+1);
-        helper(toppingCosts, target, currSum+toppingCosts[index], index+1);
-        helper(toppingCosts, target, currSum+2*toppingCosts[index], index+1);
     }
-    
-    int closestCost(vector<int>& baseCosts, vector<int>& toppingCosts, int target) 
-    {
-        for(auto b:baseCosts)
-            helper(toppingCosts, target, b, 0);
-        
+    int closestCost(vector<int>& baseCosts, vector<int>& toppingCosts, int target) {
+        for(auto b:baseCosts){
+            solve(toppingCosts,target,b,0);
+        }
         return ans;
     }
 };
