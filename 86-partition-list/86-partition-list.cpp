@@ -13,18 +13,11 @@ public:
     ListNode* partition(ListNode* head, int x) {
         ListNode* left=new ListNode(0),*right=new ListNode(0),*l=left,*r=right;
         while(head){
-            if(head->val<x){
-                l->next=head;
-                l=l->next;
+            ListNode*&cur=head->val<x?l:r;
+                cur->next=head;
+                cur=cur->next;
                 head=head->next;
-                l->next=NULL;
-            }else{
-                r->next=head;
-                r=r->next;
-                head=head->next;
-                r->next=NULL;
-            }
-            
+                cur->next=NULL;
         }
         l->next=right->next;
         return  left->next;
