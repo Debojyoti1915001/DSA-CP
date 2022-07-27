@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<int> partitionLabels(string s) {
-        vector<int>pos(26);
+        vector<int>pos(26);//this holds the last position of every char
         for(int i=0;i<s.size();i++){
             pos[s[i]-'a']=i;
         }
