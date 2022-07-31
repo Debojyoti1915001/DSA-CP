@@ -7,6 +7,7 @@ public:
         }
         int ans=0;
         for(auto i:s){
+            if(m[i].size()==0)continue;
             vector<string>v=m[i];
             m.erase(i);
             for(auto j:v){
