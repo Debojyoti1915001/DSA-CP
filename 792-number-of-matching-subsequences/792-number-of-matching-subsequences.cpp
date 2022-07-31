@@ -1,23 +1,17 @@
 class Solution {
 public:
     int numMatchingSubseq(string s, vector<string>& words) {
-        int ans=0;
-        map<char,vector<string>>mp;
-        for(string &word:words){
-            mp[word[0]].push_back(word);
+        map<char,vector<string>>m;
+        for(auto w:words){
+            m[w[0]].push_back(w);
         }
-        for(char c:s){
-            if(mp[c].size()){
-                vector<string> wrds=mp[c];
-                 mp.erase(c);
-                for (string& word : wrds) {
-                    if (word.size() == 1) {
-                        ans++;
-                    }
-                    else {
-                        mp[word[1]].push_back(word.substr(1));
-                    }
-                }
+        int ans=0;
+        for(auto i:s){
+            vector<string>v=m[i];
+            m.erase(i);
+            for(auto j:v){
+                if(j.size()==1)ans++;
+                else m[j[1]].push_back(j.substr(1));
             }
         }
         return ans;
