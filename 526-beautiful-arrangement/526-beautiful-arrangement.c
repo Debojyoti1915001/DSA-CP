@@ -1,12 +1,7 @@
 int ans=0;
 void dfs(int arr[],int m[],int n,int idx){
     if(idx==n){
-        for(int i=0;i<=n;i++){
-            if(i==n)ans++;
-            else if(arr[i]%(i+1)!=0&&(i+1)%arr[i]!=0){
-                return;
-            }
-        }
+        ans++;
         return;
     }
     for(int curVal=1;curVal<=n;curVal++){
