@@ -9,13 +9,13 @@ void dfs(int arr[],int m[],int n,int idx){
         }
         return;
     }
-    for(int i=1;i<=n;i++){
-        if(m[i]==0){
-            if((idx+1)%(i)!=0&&i%(idx+1)!=0)continue;
-            m[i]=1;
-            arr[idx]=i;
+    for(int curVal=1;curVal<=n;curVal++){
+        if(m[curVal]==0){
+            if((idx+1)%(curVal)!=0&&curVal%(idx+1)!=0)continue;
+            m[curVal]=1;
+            arr[idx]=curVal;
             dfs(arr,m,n,idx+1);
-            m[i]=0;
+            m[curVal]=0;
         }
     }
 }
