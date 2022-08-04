@@ -21,7 +21,7 @@ void dfs(int arr[],int m[],int n,int idx){
 }
 int countArrangement(int n){
     ans=0;
-    int arr[30],m[30]={};
+    int arr[16],m[16]={};
     if(n==1)return 1;
     dfs(arr,m,n,0);
     return ans;
