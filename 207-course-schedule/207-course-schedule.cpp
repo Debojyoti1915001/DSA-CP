@@ -2,28 +2,31 @@ class Solution {
 public:
     //detect cycle in directed graph
     vector<vector<int>>g;
-    vector<int>vis;
-    bool cycle=false;
-    void isCyclic(int i){
+    vector<int>vis,order;
+    bool isCyclic(int i){
         vis[i]=1;
+        order[i]=1;
         for(auto &j:g[i]){
-           if(vis[j]==0)
-               isCyclic(j);
-            if(vis[j]==1){
-                cycle=true;
-            }
+           if(!vis[j]){
+               if(isCyclic(j))return true;
+           }
+           else if(order[j]){
+               return true;
+           }
         }
-        vis[i]=2;
+        order[i]=0;
+        return false;
     }
     bool canFinish(int n, vector<vector<int>>& p) {
-        g.resize(n);
-        vis.resize(n,0);
+        g.resize(n+1);
+        vis.resize(n+1,0);
+        order.resize(n+1,0);
         for(auto &i:p){
             g[i[0]].push_back(i[1]);
         }
         for(int i=0;i<n;i++){
-            if(vis[i]==0)isCyclic(i);
-            if(cycle)return false;
+            if(vis[i]==0)
+                if(isCyclic(i))return false;
         }
         return true;
     }
