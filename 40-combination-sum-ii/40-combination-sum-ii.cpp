@@ -5,6 +5,7 @@ public:
             res.push_back(temp);
             return;
         }
+        if(target<0)return;
         for(int i=idx;i<arr.size();i++){
             if(i>idx&&arr[i]==arr[i-1])continue;
             if(arr[i]>target)break;
