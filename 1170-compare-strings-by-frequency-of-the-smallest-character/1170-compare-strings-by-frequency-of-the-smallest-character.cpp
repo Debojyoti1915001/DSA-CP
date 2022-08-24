@@ -18,9 +18,6 @@ public:
             cnt.push_back(solve(i));
         }
         sort(cnt.begin(),cnt.end());
-        for(auto i:cnt){
-            // cout<<i<<" ";
-        }
         for(auto &i:queries){
             int cur=solve(i);
             int bb=upper_bound(cnt.begin(),cnt.end(),cur)-cnt.begin();
