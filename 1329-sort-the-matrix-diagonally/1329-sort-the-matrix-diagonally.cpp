@@ -4,7 +4,6 @@ public:
         int n=mat.size(),m=mat[0].size();
         int si=0,sj=m-1;
         while(si!=n){
-            // cout<<si<<" "<<sj<<endl;
             int i=si,j=sj,k=0;
             vector<int>temp;
             while(i<n&&j<m){
