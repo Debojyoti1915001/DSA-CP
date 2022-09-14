@@ -11,10 +11,9 @@
  */
 class Solution {
 public:
-    int ans=0;
-    void solve(TreeNode* root,vector<int>&cnt){
+    int solve(TreeNode* root,vector<int>&cnt){
         if(!root){
-            return;
+            return 0;
         }
         cnt[root->val]++;
         if(!root->left&&!root->right){
@@ -24,17 +23,18 @@ public:
                     o++;
                 }
             }
-            if(o<=1)ans++;
+            if(o<=1){
+                cnt[root->val]--;
+                return 1;
+            }
         }
-        solve(root->left,cnt);
-        solve(root->right,cnt);
+        int cur=solve(root->left,cnt)+solve(root->right,cnt);
         cnt[root->val]--;
-        
+        return cur;
     }
     int pseudoPalindromicPaths (TreeNode* root) {
         if(!root)return 0;
         vector<int>cnt(10);
-        solve(root,cnt);
-        return ans;
+        return solve(root,cnt);
     }
 };
