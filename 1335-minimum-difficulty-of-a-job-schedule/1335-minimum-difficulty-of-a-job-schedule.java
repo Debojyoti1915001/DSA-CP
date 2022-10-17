@@ -3,6 +3,7 @@ class Solution {
     public int minDifficulty(int[] v, int d) {
         final int n=v.length;
         if(n<d)return -1;
+        //dp array 
         int dp[][]=new int[n][d+1];
         for(int []i:dp)Arrays.fill(i,-1);
         return dfs(0,d,v,dp);
@@ -13,10 +14,10 @@ class Solution {
         if(len==n||d==0)return Integer.MAX_VALUE;
         if(dp[len][d]!=-1)return dp[len][d];
         int min=Integer.MAX_VALUE;
-        int curMax=v[len];
+        int curMax=v[len];//this tells the maximum value from len to i
         for(int sch=len;sch<n;sch++){
             curMax=Math.max(curMax,v[sch]);
-            int temp=dfs(sch+1,d-1,v,dp);
+            int temp=dfs(sch+1,d-1,v,dp);//this returns the ans of the upcoming array
             // System.out.println(temp);
             if(temp!=Integer.MAX_VALUE){
                 min=Math.min(temp+curMax,min);
