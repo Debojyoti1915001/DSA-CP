@@ -1,29 +1,28 @@
 class Solution {
-     public int minDifficulty(int[] jobDifficulty, int D) {
-        final int N = jobDifficulty.length;
-        if(N < D) return -1;
-
-        int[][] memo = new int[N][D + 1];
-        for(int[] row : memo) Arrays.fill(row, -1);
-
-        return dfs(D, 0, jobDifficulty, memo);
+    
+    public int minDifficulty(int[] v, int d) {
+        final int n=v.length;
+        if(n<d)return -1;
+        int dp[][]=new int[n][d+1];
+        for(int []i:dp)Arrays.fill(i,-1);
+        return dfs(0,d,v,dp);
     }
-
-    private int dfs(int d, int len, int[] jobDifficulty, int[][] memo){
-        final int N = jobDifficulty.length;
-        if(d == 0 && len == N) return 0;
-        if(d == 0 || len == N) return Integer.MAX_VALUE;
-        if(memo[len][d] != -1) return memo[len][d];
-
-        int curMax = jobDifficulty[len];
-        int min = Integer.MAX_VALUE;
-        for(int schedule = len; schedule < N; ++schedule){
-            curMax = Math.max(curMax, jobDifficulty[schedule]);
-            int temp = dfs(d - 1, schedule + 1, jobDifficulty, memo);
-            if(temp != Integer.MAX_VALUE)
-                min = Math.min(min, temp + curMax);
+    private int dfs(int len,int d,int[] v,int [][]dp){
+        final int n=v.length;
+        if(len==n&&d==0)return 0;
+        if(len==n||d==0)return Integer.MAX_VALUE;
+        if(dp[len][d]!=-1)return dp[len][d];
+        int min=Integer.MAX_VALUE;
+        int curMax=v[len];
+        for(int sch=len;sch<n;sch++){
+            curMax=Math.max(curMax,v[sch]);
+            int temp=dfs(sch+1,d-1,v,dp);
+            // System.out.println(temp);
+            if(temp!=Integer.MAX_VALUE){
+                min=Math.min(temp+curMax,min);
+            }
         }
-
-        return memo[len][d] = min;
+        
+        return dp[len][d]=min;
     }
 }
