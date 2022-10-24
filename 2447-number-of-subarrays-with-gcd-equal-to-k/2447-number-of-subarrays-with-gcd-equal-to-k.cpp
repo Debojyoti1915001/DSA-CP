@@ -15,12 +15,12 @@ public:
         int res=0;
         for(auto &i:nums){
             unordered_map<int,int>gcd1;
-            if(i%k==0){
+            // if(i%k==0){
                 ++gcd[i];
                 for(auto [num,cnt]:gcd){
                     gcd1[__gcd(num,i)]+=cnt;
                 }
-            }
+            // }
             res+=gcd1[k];
             swap(gcd,gcd1);
         }
