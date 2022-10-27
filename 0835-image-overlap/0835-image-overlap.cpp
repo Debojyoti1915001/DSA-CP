@@ -13,6 +13,8 @@ public:
         map<pair<int,int>,int>c;
         for(auto &[ai,aj]:A){
             for(auto &[bi,bj]:B){
+                //after the movement 
+                //suppose {6,2} i.e. right by 6 times and up by 2, map will give the ans
                 c[{ai-bi,aj-bj}]++;
                 res=max(res,c[{ai-bi,aj-bj}]);
             }
