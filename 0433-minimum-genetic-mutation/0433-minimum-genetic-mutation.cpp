@@ -3,6 +3,7 @@ public:
     int minMutation(string start, string end, vector<string>& bank) {
         unordered_map<string,int>vis;
         for(auto &i:bank)vis[i]=1;
+        vector<char>replace={'A','C','G','T'};
         queue<string>q;
         q.push(start);
         int steps=0;
@@ -13,7 +14,7 @@ public:
                 q.pop();
                 if(t==end)return steps;
                 for(int i=0;i<t.size();i++){
-                    for(char j='A';j<='Z';j++){
+                    for(char j:replace){
                         if(t[i]!=j){
                             char temp=t[i];
                             t[i]=j;
