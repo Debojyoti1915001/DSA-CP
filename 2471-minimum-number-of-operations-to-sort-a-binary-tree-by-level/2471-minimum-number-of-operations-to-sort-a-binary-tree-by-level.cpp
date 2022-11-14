@@ -11,6 +11,7 @@
  */
 class Solution {
 public:
+    //swap the minimum number of elements to make an array sorted 
     int changeRequired(vector<int>&v){
         
         int n=v.size();
@@ -38,6 +39,7 @@ public:
         return ans;
     }
     int minimumOperations(TreeNode* root) {
+        //simple bfs
         queue<TreeNode*>q;
         int ans=0;
         q.push(root);
