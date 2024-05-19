@@ -18,6 +18,7 @@ public:
             ans+=abs(root->val-1);
             return root->val-1; 
         }
+        //nicha jitna hai ek chorke sab return kardo
         int r=0,l=0,cur=root->val;
         if(root->left!=NULL)l=solve(root->left);
         if(root->right!=NULL)r=solve(root->right);
