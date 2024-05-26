@@ -14,7 +14,6 @@ public:
                 for(int k=j+1;k<10;k++){
                     int cntj=mp[i][j];
                     int cntk=mp[i][k];
-                    if(cntj==0||cntk==0)continue;
                     ans+=(cntj*cntk);
                 }   
             }
