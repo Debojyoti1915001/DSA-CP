@@ -3,10 +3,10 @@ public:
     int minChanges(int n, int k) {
         int ans=0;
         while(n!=k){
-            if(n%2!=k%2 && n%2==1){
+            if((n&1) != (k&1) && (n&1)==1){
                 ans++;
             }
-            else if(n%2!=k%2 && n%2==0)return -1;
+            else if((n&1)!= (k&1) && (n&1) ==0)return -1;
             n=n/2;
             k=k/2;
             
