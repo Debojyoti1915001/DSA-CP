@@ -9,7 +9,6 @@ public:
             else if((n&1)!= (k&1) && (n&1) ==0)return -1;
             n=n/2;
             k=k/2;
-            
         }
         return ans;
     }
